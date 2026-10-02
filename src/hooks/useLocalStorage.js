@@ -8,12 +8,14 @@ const useLocalStorage = (key, initialValue) => {
         return initialValue
     }
 
-    try {
-        return JSON.parse(savedValue)
-    } catch (error) {
-        console.error("Invalid localStorage data:", error)
-      return initialValue
-    }
+   try {
+    const parsedValue = JSON.parse(savedValue)
+
+    return parsedValue ?? initialValue
+} catch (error) {
+    console.error("Invalid localStorage data:", error)
+    return initialValue
+}
 
   })
 
